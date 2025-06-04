@@ -25,4 +25,62 @@ Constraints:
 s consists of English letters, digits, symbols and spaces
 
 
+```
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int ans = 0;
+        int[] hash = new int[128];
+        int l = 0;
+        int r = 0;
+        while (r < s.length()) { // must be not r++
+            char c = s.charAt(r);
+            hash[c]++;
+            while(hash[c] > 1) {
+                hash[s.charAt(l)]--;
+                l++;
+            }
+            ans = Math.max(ans, r - l + 1);
+            r++;
+        }
+        return ans;
+    }
+}
+
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        ans = 0
+        map = defaultdict(int) // a regular dictionary and it provides a default value for non-existent key
+        l = 0
+        for r, c in enumerate(s): // you can get the index position and character at the same time
+            map[c] += 1 
+            while map[c] > 1:
+                map[s[l]] -= 1
+                l += 1
+            ans = max(ans, r - l + 1)
+        return ans
+
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int ans = 0;
+        // std::vector<int> map(128, 0);
+        std::unordered_map<char, int> map;
+        int l = 0;
+        int r = 0;
+        int n = s.size();
+        while (r < n) {
+            map[s[r]]++;
+            while (map[s[r]] > 1) {
+                map[s[l++]]--;
+            }
+            ans = max(ans, r - l + 1);
+            r++;
+        }
+        return ans;
+    }
+};
+```
+
 
