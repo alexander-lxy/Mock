@@ -26,16 +26,3 @@ s consists of English letters, digits, symbols and spaces
 
 
 
-###LXY
-
-```
-
-```
-
-
-
-###CJM
-
-```
-
-```
